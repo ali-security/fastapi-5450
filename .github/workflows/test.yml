@@ -32,7 +32,9 @@ jobs:
           key: ${{ runner.os }}-python-${{ env.pythonLocation }}-pydantic-v2-${{ hashFiles('pyproject.toml', 'requirements-tests.txt') }}-test-v04
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: pip install -r requirements-tests.txt
+        run: |
+          pip config set global.index-url "https://fastapi:eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJhYzE2Mjc3In0.eyJzdWIiOiIxZDRmOTNmNy1kOGQ4LTRiNDMtYWQ5YS0yN2FjODI5MTFmZjAiLCJ0eXBlIjoidGVuYW50QWNjZXNzVG9rZW4iLCJ0ZW5hbnRJZCI6Ijc2NTk0MzY1LTBjZjMtNGEzZi1iODk4LWQ0MGI1NDAwMmRiNyIsImFwcGxpY2F0aW9uSWQiOiIwMWQ3NTcxMy04NjZlLTRlZGYtODQ3Zi1lZDkwYTk0Nzg1ZGIiLCJyb2xlcyI6WyJGRVRDSC1ST0xFUy1CWS1BUEkiXSwicGVybWlzc2lvbnMiOlsiRkVUQ0gtUEVSTUlTU0lPTlMtQlktQVBJIl0sImF1ZCI6ImJhYzE2Mjc3LTVjYmUtNDA3Yy04MjM5LWRmZmY3Mzk4ZWIwZSIsImlzcyI6Imh0dHBzOi8vbG9naW4uc2VhbHNlY3VyaXR5LmlvIiwiaWF0IjoxNzE3NTg0ODQxLCJleHAiOjE3MTc2NzEyNDF9.Pk2etd6VYdvMggq1EKZmAmcLvxxqvo4a84mu4BdcZvTbtMhVpdLn249QPX7WWki3AR3h1UmZNpqNxd8QpGHiFEbHSpjOVWAM8iwKd9J12N7XlROOrC7hH2BlfuyYm00CZETfmbp8Ws35nCyIb1f2kNfTTTXT079qUq36coBNpM1CJC1aH7UeCyEAqVaBJwu2JQ2SAEjumfmljHxYLTFYjso3tR9-_KU3t9FhTkpaKaMyDRCeomntc9HAerCoSZrg7pYt6SQm1Hqd9SwQPWVWEMSPerih1yniEo5J4TWc5Qu5S5J-7FNNliCtzlHypUSO-_YUb5HeAZ6RONIAX2xH9g@pypi.sealsecurity.io/simple"
+          pip install -r requirements-tests.txt
       - name: Install Pydantic v2
         run: pip install "pydantic>=2.0.2,<3.0.0"
       - name: Lint
@@ -86,7 +88,9 @@ jobs:
           key: ${{ runner.os }}-python-${{ env.pythonLocation }}-${{ matrix.pydantic-version }}-${{ hashFiles('pyproject.toml', 'requirements-tests.txt') }}-test-v04
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: pip install -r requirements-tests.txt
+        run: |
+          pip config set global.index-url "https://fastapi:eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJhYzE2Mjc3In0.eyJzdWIiOiIxZDRmOTNmNy1kOGQ4LTRiNDMtYWQ5YS0yN2FjODI5MTFmZjAiLCJ0eXBlIjoidGVuYW50QWNjZXNzVG9rZW4iLCJ0ZW5hbnRJZCI6Ijc2NTk0MzY1LTBjZjMtNGEzZi1iODk4LWQ0MGI1NDAwMmRiNyIsImFwcGxpY2F0aW9uSWQiOiIwMWQ3NTcxMy04NjZlLTRlZGYtODQ3Zi1lZDkwYTk0Nzg1ZGIiLCJyb2xlcyI6WyJGRVRDSC1ST0xFUy1CWS1BUEkiXSwicGVybWlzc2lvbnMiOlsiRkVUQ0gtUEVSTUlTU0lPTlMtQlktQVBJIl0sImF1ZCI6ImJhYzE2Mjc3LTVjYmUtNDA3Yy04MjM5LWRmZmY3Mzk4ZWIwZSIsImlzcyI6Imh0dHBzOi8vbG9naW4uc2VhbHNlY3VyaXR5LmlvIiwiaWF0IjoxNzE3NTg0ODQxLCJleHAiOjE3MTc2NzEyNDF9.Pk2etd6VYdvMggq1EKZmAmcLvxxqvo4a84mu4BdcZvTbtMhVpdLn249QPX7WWki3AR3h1UmZNpqNxd8QpGHiFEbHSpjOVWAM8iwKd9J12N7XlROOrC7hH2BlfuyYm00CZETfmbp8Ws35nCyIb1f2kNfTTTXT079qUq36coBNpM1CJC1aH7UeCyEAqVaBJwu2JQ2SAEjumfmljHxYLTFYjso3tR9-_KU3t9FhTkpaKaMyDRCeomntc9HAerCoSZrg7pYt6SQm1Hqd9SwQPWVWEMSPerih1yniEo5J4TWc5Qu5S5J-7FNNliCtzlHypUSO-_YUb5HeAZ6RONIAX2xH9g@pypi.sealsecurity.io/simple"
+          pip install -r requirements-tests.txt
       - name: Install Pydantic v1
         if: matrix.pydantic-version == 'pydantic-v1'
         run: pip install "pydantic>=1.10.0,<2.0.0"
