@@ -8,6 +8,7 @@ description = "FastAPI framework, high performance, easy to learn, fast to code,
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
+license-files = { paths = ["LICENSE"] }
 authors = [
     { name = "Sebastián Ramírez", email = "tiangolo@gmail.com" },
 ]

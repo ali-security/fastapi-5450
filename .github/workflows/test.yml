@@ -38,6 +38,27 @@ jobs:
       - name: Lint
         run: bash scripts/lint.sh
 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+          # Issue ref: https://github.com/actions/setup-python/issues/436
+          # cache: "pip"
+          # cache-dependency-path: pyproject.toml
+      - name: Install Dependencies
+        run: pip install hatchling==1.17.1
+      - name: Build
+        run: python -m hatchling build
+      - name: Store dist files
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/*
+
   test:
     runs-on: ubuntu-latest
     strategy:
